@@ -132,13 +132,13 @@ def bench_memory_access(reps=1000):
         forward_time = timeit.timeit(lambda: sess.run(
             output,
             feed_dict={xi: xi_data}), number=reps)
-        print("forward: " + str(SEC_TO_MICRO*forward_time/reps) + " micros")
+        print("forward: " + str(SEC_TO_MILLI*forward_time/reps) + " ms")
     with tf.Session() as sess:
         sess.run(init)
         gradient_time = timeit.timeit(lambda: sess.run(
             grad,
             feed_dict={xi: xi_data}), number=reps)
-        print("gradient: " + str(SEC_TO_MICRO*gradient_time/reps) + " micros")
+        print("gradient: " + str(SEC_TO_MILLI*gradient_time/reps) + " ms")
 
 def bench_computer(reps=1000):
     access_config = {
